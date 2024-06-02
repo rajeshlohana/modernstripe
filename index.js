@@ -1,6 +1,7 @@
 
 require('dotenv').config();
 const express = require("express");
+const bodyParser = require("body-parser");
 const cors = require("cors");
 const Stripe = require('stripe');
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
@@ -9,11 +10,14 @@ const PORT = 8080;
 
 //app.use("/pay", express.raw({ type: "*/*" }));
 
-app.use(express.json({
-  type: "*/*"
-}))
-
+// app.use(express.json({
+//   type: "*/*"
+// }))
 //app.use(express.json());
+
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 app.get('/', async (req, res) => {
