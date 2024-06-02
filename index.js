@@ -16,6 +16,10 @@ app.use(express.json({
 //app.use(express.json());
 app.use(cors());
 
+app.get('/', async (req, res) => {
+	res.send('api is live to accept payment calls');
+})
+
 app.post('/pay',async (req, res)=>{
 try {
 	console.log('Subscriber Name : ' + JSON.parse(req.body).name);	
