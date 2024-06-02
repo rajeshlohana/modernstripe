@@ -7,11 +7,11 @@ const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 const app = express();
 const PORT = 8080;
 
-app.use("/pay", express.raw({ type: "*/*" }));
+//app.use("/pay", express.raw({ type: "*/*" }));
 
-// app.use(express.json({
-//   type: "*/*"
-// }))
+app.use(express.json({
+  type: "*/*"
+}))
 
 //app.use(express.json());
 app.use(cors());
